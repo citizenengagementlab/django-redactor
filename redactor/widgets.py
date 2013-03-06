@@ -76,6 +76,7 @@ class RedactorEditor(Textarea):
             'django-redactor/lib/jquery.min.js',
             'django-redactor/redactor/redactor.min.js',
             'django-redactor/redactor/setup.js',
+            'django-redactor/plugins/clean_text.js',
         )
         css = {
             'screen': [
@@ -104,6 +105,7 @@ class AdminRedactorEditor(RedactorEditor):
             'django-redactor/lib/jquery.min.js',
             'django-redactor/redactor/redactor.min.js',
             'django-redactor/redactor/setup.js',
+            'django-redactor/plugins/clean_text.js',
         )
         css = {
             'screen': [
@@ -112,3 +114,12 @@ class AdminRedactorEditor(RedactorEditor):
             ]
         }
         return Media(css=css, js=js)
+
+    def __init__(self, attrs=None, redactor_css=None, redactor_settings=None):
+        super(AdminRedactorEditor, self).__init__(attrs=attrs)
+        extra_admin_settings = {
+            'plugins':['clean_text']
+        }
+        if redactor_settings:
+            extra_admin_settings.update(redactor_settings)
+        self.redactor_settings.update(extra_admin_settings)
