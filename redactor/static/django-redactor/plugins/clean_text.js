@@ -10,6 +10,7 @@
 	plugins : ['clean_text:init']
 
 	Copyright (c) 2012 João Sardinha
+	https://github.com/johnsardine/redactor-plugins
 */
 
 if (typeof RedactorPlugins === 'undefined') var RedactorPlugins = {};
